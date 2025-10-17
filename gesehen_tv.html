@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>gesehen — b3nn3t (TV)</title>
+
+  <!-- Basis-Styles der bestehenden Seite können weiterhin geladen werden -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* --- TV-Frame Layout --- */
+    .tv-wrap {
+      display: grid;
+      place-items: center;
+      margin: 2rem 0 4rem;
+    }
+
+    /* Container, der das Frame-Bild als Hintergrund nutzt */
+    .tv-frame {
+      position: relative;
+      width: min(95vw, 720px);         /* responsiv */
+      aspect-ratio: 553 / 436;         /* Bildseitenverhältnis beibehalten */
+      background-image: url('59062844-0b57-420c-a78f-707b56e2b673.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,.25));
+    }
+
+    /* Bereich des sichtbaren "Bildschirms"; Werte als Prozente des Frame-Bildes */
+    .tv-screen {
+      position: absolute;
+      /* Diese Offsets wurden anhand des Frame-Bildes kalibriert */
+      left: 5.4%;
+      top: 6.4%;
+      width: 74.1%;
+      height: 73.5%;
+      overflow: hidden;
+      border-radius: 24px;             /* runde Ecken wie beim CRT */
+      box-shadow: inset 0 0 12px rgba(0,0,0,.35);
+      background: #222;                /* falls Video noch lädt */
+    }
+
+    .tv-screen video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;               /* füllt die Fläche ohne Balken */
+      display: block;
+    }
+
+    /* Optional: kleine Statusleiste unter dem TV */
+    .tv-caption {
+      margin-top: .75rem;
+      font: 500 0.95rem/1.4 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      text-align: center;
+      opacity: .8;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="index.html" aria-label="b3nn3t Home">
+      <img alt="" src="favicon.svg">
+      <strong>b3nn3t</strong>
+    </a>
+  </header>
+
+  <main class="main">
+    <h1>gesehen</h1>
+    <p>Inspirationen und was mich bewegt</p>
+
+    <section class="tv-wrap" aria-label="Vintage TV mit Video">
+      <div class="tv-frame">
+        <div class="tv-screen">
+          <video
+            src="B3NN3T-003-Reverse-Production%204.mp4"
+            playsinline
+            muted
+            loop
+            autoplay
+            controls
+          >
+            Dein Browser unterstützt das Video-Tag nicht.
+          </video>
+        </div>
+      </div>
+      <p class="tv-caption">Video im gezeichneten Fernseher</p>
+    </section>
+  </main>
+
+  <a class="home-btn" href="index.html" aria-label="Zur Startseite">Startseite</a>
+  <footer>© b3nn3t · <a href="impressum.html">Impressum / Datenschutz</a></footer>
+
+  <script src="script.js"></script>
+  <script src="swipe-nav.js" defer></script>
+</body>
+</html>
