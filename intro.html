@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intro</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: black;
+      overflow: hidden;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .no-video {
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 40vh;
+    }
+  </style>
+</head>
+<body>
+
+  <video id="introVideo" autoplay muted playsinline>
+    <source src="assets/B3NN3T-003-Reverse-Production 4.mp4" type="video/mp4">
+    <div class="no-video">Dein Browser unterstützt keine HTML5-Videos.</div>
+  </video>
+
+  <script>
+    if (localStorage.getItem('introPlayed')) {
+      window.location.href = "index.html";
+    } else {
+      const video = document.getElementById('introVideo');
+      video.addEventListener('ended', () => {
+        localStorage.setItem('introPlayed', 'true');
+        window.location.href = "index.html";
+      });
+      video.addEventListener('error', () => {
+        setTimeout(() => window.location.href = "index.html", 10000);
+      });
+    }
+  </script>
+
+</body>
+</html>
